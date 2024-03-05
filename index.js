@@ -9,7 +9,6 @@ const app = express();
 
 //middleware 
 app.use(bodyParser.json());
-
 app.use(cors());
 app.use(express.json());
 
@@ -35,12 +34,14 @@ const userSchema = new mongoose.Schema({
 const User = mongoose.model('User', userSchema);
 
 
-//  All Routes
 app.get("/",(req,res)=>{
-    res.send("Api is working")
+    res.send("Api is working") // checking is the API working or not 
+
 })
 
 
+
+// sign up routes 
 app.post('/signup', async (req, res) => {
   const { name, email, password } = req.body;
   try {
@@ -52,5 +53,5 @@ app.post('/signup', async (req, res) => {
   }
 });
 
-const PORT =8080;
+const PORT =8080; // Application server listening on this port 
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
